@@ -221,13 +221,13 @@
   <body class="bg-gray-50 text-gray-900 overflow-x-hidden antialiased">
     
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 px-4 py-3">
-      <div class="max-w-7xl mx-auto">
-        <div class="glass rounded-xl px-6 py-3 shadow-sm relative">
+    <nav class="fixed top-0 left-0 right-0 z-50 px-2 py-2 md:px-4 md:py-3">
+      <div class="max-w-7xl mx-auto relative">
+        <div class="glass rounded-xl px-4 py-2 md:px-6 md:py-3 shadow-sm relative">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-3 flex-shrink-0">
                 <img src="assets/transparent logo large new.svg" alt="MACH Logo" class="h-8 w-8 md:h-10 md:w-10 object-contain rounded-full shadow-md ring-1 ring-white/20" />
-              <div class="text-2xl md:text-3xl font-extrabold text-gradient tracking-tight" style="font-family: 'Quicksand', sans-serif; letter-spacing: -1px;">
+              <div class="text-xl md:text-3xl font-extrabold text-gradient tracking-tight" style="font-family: 'Quicksand', sans-serif; letter-spacing: -1px;">
                 MACH
               </div>
             </div>
@@ -256,20 +256,20 @@
               </button>
             </div>
           </div>
+        </div>
 
-          <!-- Mobile Menu Dropdown (Overlay) -->
-          <div id="mobile-menu" class="hidden fixed inset-0 z-40 bg-white/95 backdrop-blur-xl pt-32 px-6 flex flex-col gap-6 md:hidden transition-all duration-300 origin-top">
+        <!-- Mobile Menu Dropdown (Overlay) -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 z-40 bg-white rounded-2xl shadow-xl mt-2 p-6 flex flex-col gap-4 md:hidden border border-gray-100 origin-top">
               <a href="index.html" class="text-2xl font-bold text-gray-800 hover:text-purple-600 transition-colors block text-center">Our App</a>
               <a href="aboutUs.html" class="text-2xl font-bold text-gray-800 hover:text-purple-600 transition-colors block text-center">About Us</a>
               <a href="news.html" class="text-2xl font-bold text-gray-800 hover:text-purple-600 transition-colors block text-center">News</a>
               <a href="forClinicians.html" class="text-2xl font-bold text-blue-900 hover:text-purple-700 transition-colors block text-center">For Clinicians</a>
               <a href="contactUs.html" class="text-2xl font-bold text-gray-800 hover:text-purple-600 transition-colors block text-center">Contact Us</a>
               <div class="text-center mt-4">
-                <a href="#" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-3 rounded-full text-xl font-semibold hover:shadow-xl transition transform-gpu inline-block">
+                <a href="pilot.html" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-3 rounded-full text-xl font-semibold hover:shadow-xl transition transform-gpu inline-block">
                   Coming soon
                 </a>
               </div>
-          </div>
         </div>
       </div>
     </nav>
@@ -1076,6 +1076,33 @@
           }
         });
       });
+    </script>
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const iconMenu = btn.querySelector('.icon-menu');
+      const iconClose = btn.querySelector('.icon-close');
+
+      if (btn && menu) {
+        btn.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+          if (iconMenu && iconClose) {
+            iconMenu.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+          }
+        });
+        
+        // Close menu when clicking a link
+        menu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            menu.classList.add('hidden');
+            if (iconMenu && iconClose) {
+              iconMenu.classList.remove('hidden');
+              iconClose.classList.add('hidden');
+            }
+          });
+        });
+      }
     </script>
   </body>
 </html>
